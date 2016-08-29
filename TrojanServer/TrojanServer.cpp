@@ -1,4 +1,4 @@
-
+/*
 #include "stdafx.h"
 #include <winsock2.h>
 #include <process.h>
@@ -62,7 +62,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	std::cout << "Listening...\n";
 
-	while (client = accept(sock, 0, 0)) /*accepting and "threading" clients*/
+	while (client = accept(sock, 0, 0)) //accepting and "threading" clients
 	{
 		if (client == INVALID_SOCKET)
 		{
@@ -106,4 +106,4 @@ void sender(SOCKET Client)
 		send(Client, c, sizeof(ptr), 0);
 	}
 
-}
+}*/

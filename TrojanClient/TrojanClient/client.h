@@ -19,6 +19,10 @@ public:
 	void sender(const std::string& str) const;
 	void receiver();
 	int c_connect();
+	~Client()
+	{
+		sender("$$");
+	}
 };
 
 

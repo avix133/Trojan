@@ -30,13 +30,13 @@
     <ClInclude Include="sendmail.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="trojan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="client.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="keylogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,13 +56,10 @@
     <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="trojan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="trojanClient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="keylogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

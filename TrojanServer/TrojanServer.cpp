@@ -20,7 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int iResult;
 	sockaddr_in addr; //ip
 	SOCKET sock, client;
-
+	
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(8080);
 	addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");

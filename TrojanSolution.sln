@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrojanServer", "TrojanServer\TrojanServer.vcxproj", "{169D7F85-2B6B-4B6D-AAE0-8C11709B7676}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrojanClient", "..\TrojanClient\TrojanClient\TrojanClient.vcxproj", "{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrojanClient", "TrojanClient\TrojanClient\TrojanClient.vcxproj", "{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

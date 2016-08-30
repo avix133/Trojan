@@ -1,4 +1,4 @@
 ========================================================================
 		CONSOLE APPLICATION : TrojanServer Project Overview
-					CREATED BY:	DAWID FIELUBA
+		CREATED BY:	DAWID FIELUBA
 ========================================================================

@@ -1,6 +1,6 @@
 ========================================================================
 		CONSOLE APPLICATION : TrojanClient Project Overview
-					CREATED BY:	DAWID FIELUBA
+		CREATED BY:	DAWID FIELUBA
 ========================================================================
 
 Simple Trojan Horse client:

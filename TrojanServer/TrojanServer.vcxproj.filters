@@ -30,6 +30,12 @@
     <ClInclude Include="serverCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConsoleLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="answerFromClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="serverCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="answerFromClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

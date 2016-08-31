@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="answerFromClient.h" />
     <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="debug.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="serverCommand.h" />
     <ClInclude Include="stdafx.h" />

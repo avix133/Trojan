@@ -6,10 +6,8 @@
 #include <string>
 #include <windows.h> 
 #include <thread>
+#include "debug.h"
 
-
-
-#define DEBUG true
 
 
 class Keylogger //0$

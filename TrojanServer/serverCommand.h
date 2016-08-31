@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 #include "server.h"
-
-#define DEBUG true
+#include "debug.h"
 
 class ServerCommand
 {

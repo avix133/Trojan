@@ -4,8 +4,7 @@
 #include "serverCommand.h"
 #include <Windows.h>
 #include <iostream>
-
-#define DEBUG true
+#include "debug.h"
 
 
 

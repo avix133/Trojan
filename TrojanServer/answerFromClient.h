@@ -2,8 +2,7 @@
 #include <string>
 #include <iostream>
 #include "ConsoleLogger.h"
-
-#define DEBUG true
+#include "debug.h"
 
 class AnswerFromClient
 {

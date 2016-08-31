@@ -10,8 +10,8 @@ void Command::execCommand()
 	_cmd.erase(0, 2);
 	if (DEBUG)
 	{
-		//std::cout << "\nPrepos: " << prepos << std::endl;
-		//std::cout << "CMD: " << _cmd << std::endl;
+		std::cout << "\nPrepos: " << prepos << std::endl;
+		std::cout << "CMD: " << _cmd << std::endl;
 	}
 
 				/*V DIRECTOR V*/

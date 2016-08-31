@@ -3,7 +3,6 @@
 #include "command.h"
 
 
-#define DEBUG true
 
 void doRecv(Client * client)
 {

@@ -1,5 +1,5 @@
 #pragma once
-#define DEBUG true
+#include "debug.h"
 
 #include "keylogger.h"
 #include "client.h"
@@ -9,9 +9,6 @@
 #include <windows.h> 
 #include <thread>
 
-#include <memory>
-#include <cstdio>
-#include <stdexcept>
 
 class Command
 {

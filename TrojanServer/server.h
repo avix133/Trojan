@@ -24,7 +24,7 @@ public:
 	}
 
 	void lostConnection();
-	int Server::threadingClient();
+	int threadingClient();
 	void sender(const std::string& str) const;
 	int listener();
 	

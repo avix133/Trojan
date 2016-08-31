@@ -1,6 +1,3 @@
-// ConsoleLogger.h: interface for the CConsoleLogger class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #if !defined(AFX_CONSOLELOGGER_H__294FDF9B_F91E_4F6A_A953_700181DD1996__INCLUDED_)
 #define AFX_CONSOLELOGGER_H__294FDF9B_F91E_4F6A_A953_700181DD1996__INCLUDED_
@@ -64,10 +61,7 @@ protected:
 	HANDLE	m_hPipe;
 
 #ifdef CONSOLE_LOGGER_USING_MS_SDK
-	// we'll use this DWORD as VERY fast critical-section . for more info:
-	// * "Understand the Impact of Low-Lock Techniques in Multithreaded Apps"
-	//		Vance Morrison , MSDN Magazine  October 2005
-	// * "Performance-Conscious Thread Synchronization" , Jeffrey Richter , MSDN Magazine  October 2005
+
 	volatile long m_fast_critical_section;
 
 	inline void InitializeCriticalSection(void)

@@ -10,3 +10,6 @@ Simple Trojan Horse client:
 3. Waits for commands from server (void Client::receiver() - client.cpp)
 
 
+TO DO:
+- Client connection status
+- reconnecting to Server

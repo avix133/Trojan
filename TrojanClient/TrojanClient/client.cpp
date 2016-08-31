@@ -38,15 +38,12 @@ int Client::c_connect()
 		Sleep(1000);
 		return -1;
 	}
-
-	iResult = connect(sock, (SOCKADDR*)&addr, sizeof(sockaddr_in));
-
-	if (iResult)
+	while (iResult = connect(sock, (SOCKADDR*)&addr, sizeof(sockaddr_in)))
 	{
 		std::cout << "ERROR! Connect failed %u" << WSAGetLastError();
 		Sleep(5000);
-		return -1;
 	}
+
 	if (DEBUG)
 		std::cout << "Connected!\n";
 

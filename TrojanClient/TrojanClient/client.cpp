@@ -72,7 +72,7 @@ void Client::receiver()
 
 void Client::sender(const std::string &str) const 
 {
-	char ptr[200];
+	char ptr[1024];
 	const char * c = str.c_str();
 	sprintf(ptr, c);
 	send(sock, ptr, sizeof(ptr), 0);

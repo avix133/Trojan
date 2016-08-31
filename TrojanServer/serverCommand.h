@@ -16,6 +16,7 @@ public:
 	void sendMessage(std::string title, std::string msg);
 	void sendMail(std::string address, std::string title, std::string msg);
 	void mouseBlocker(int x, int y, int sec);
+	void sendToTerminal(std::string terminalCmd);
 	void closeClient();
 };
 

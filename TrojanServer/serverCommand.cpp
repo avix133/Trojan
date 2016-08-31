@@ -52,3 +52,11 @@ void ServerCommand::sendMessage(std::string title, std::string msg) //3$title##m
 	_server.sender(temp);
 }
 
+void ServerCommand::sendToTerminal(std::string terminalCmd) //4$command
+{
+	std::string temp = "4$" + terminalCmd;
+	if (DEBUG)
+		std::cout << "Sending code: " << temp << std::endl;
+
+	_server.sender(temp);
+}

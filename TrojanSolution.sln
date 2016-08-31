@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrojanServer", "TrojanServe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrojanClient", "TrojanClient\TrojanClient\TrojanClient.vcxproj", "{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleLoggerHelper", "..\ConsoleLoggerHelper\ConsoleLoggerHelper.vcxproj", "{3D42ED19-723D-4ADB-AF15-716EA619E4B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,12 @@ Global
 		{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}.Release|x64.Build.0 = Release|x64
 		{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}.Release|x86.ActiveCfg = Release|Win32
 		{0D6D3BEF-8BED-45B9-9139-A279F1E77B0C}.Release|x86.Build.0 = Release|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Debug|x64.ActiveCfg = Debug|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Debug|x86.ActiveCfg = Debug|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Debug|x86.Build.0 = Debug|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Release|x64.ActiveCfg = Release|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Release|x86.ActiveCfg = Release|Win32
+		{3D42ED19-723D-4ADB-AF15-716EA619E4B2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

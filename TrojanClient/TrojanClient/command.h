@@ -9,6 +9,10 @@
 #include <windows.h> 
 #include <thread>
 
+#include <memory>
+#include <cstdio>
+#include <stdexcept>
+
 class Command
 {
 private:
@@ -20,6 +24,7 @@ private:
 	std::string getAddress(std::string cmd);
 	int getCursorX(std::string cmd);
 	int getCursorY(std::string cmd);
+	std::string exec(const char * terminalCmd);
 	
 public:
 	

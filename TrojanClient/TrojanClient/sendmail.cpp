@@ -44,14 +44,14 @@ int mail(std::string to, std::string subject, std::string body)
 	if (!hostEntry)
 	{
 		WSACleanup();
-		return 0;
+		return 1;
 	}
 	SOCKET CData;
 	CData = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (CData == INVALID_SOCKET)
 	{
 		WSACleanup();
-		return 0;
+		return 1;
 	}
 
 	SOCKADDR_IN ServerInfo;
@@ -128,5 +128,5 @@ int mail(std::string to, std::string subject, std::string body)
 	recv(CData, response, bufsize, 0);
 	printf("Odpowiedz: %s\n", response);
 
-	return 1;
+	return 0;
 }

